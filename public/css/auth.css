@@ -1,0 +1,201 @@
+/* Additional CSS for Authentication Pages */
+
+/* Global Animation Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Apply animations to login/register containers */
+.container {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.left-section {
+    animation: slideInLeft 1s ease-out;
+}
+
+.right-section {
+    animation: slideInRight 1s ease-out;
+}
+
+/* Enhanced button hover effects */
+.btn-login:hover,
+.btn-register:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(79, 172, 254, 0.4);
+}
+
+/* Enhanced input focus effects */
+.form-group input:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(79, 172, 254, 0.15);
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+}
+
+/* Loading animation for forms */
+.form-loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.form-loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #4facfe, transparent);
+    animation: loading 2s infinite;
+}
+
+@keyframes loading {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Success message styling */
+.success-message {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    color: #155724;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border-left: 4px solid #28a745;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* Enhanced error message */
+.error-message {
+    animation: fadeInUp 0.5s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.error-message::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: #dc3545;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from { height: 0; }
+    to { height: 100%; }
+}
+
+/* Responsive improvements */
+@media (max-width: 1024px) {
+    .container {
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        margin: 10px;
+        min-height: auto;
+    }
+    
+    .left-section,
+    .right-section {
+        animation: fadeInUp 0.6s ease-out;
+    }
+    
+    .left-section {
+        min-height: 300px;
+        padding: 30px 20px;
+    }
+    
+    .right-section {
+        padding: 30px 20px;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .container {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+    
+    .form-group input {
+        background: #2d3748;
+        color: white;
+        border-color: #4a5568;
+    }
+    
+    .form-group input:focus {
+        background: #1a202c;
+        border-color: #4facfe;
+    }
+}
+
+/* Print styles */
+@media print {
+    .container {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    .left-section {
+        background: #f8f9fa !important;
+        color: #333 !important;
+    }
+    
+    .decorative-elements,
+    .workspace-illustration {
+        display: none;
+    }
+}
